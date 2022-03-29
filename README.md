@@ -12,7 +12,7 @@ Computer Science course asessments from the University of Helsinki
 #### Part 7 - React Router, Custom Hooks, styling and Webpack
 #### Part 8 - GraphQL
 #### Part 9 - Typescript
-#### ~~Part 10 - React Native
-#### Part 11 - Continuous Integration / Continuous Delivery (CI/CD)
-#### Part 12 - Containers
+#### ~~Part 10 - React Native~~
+#### ~~Part 11 - Continuous Integration / Continuous Delivery (CI/CD)~~
+#### ~~Part 12 - Containers
 #### Part 13 - Databases~~
