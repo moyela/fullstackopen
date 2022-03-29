@@ -14,5 +14,5 @@ Computer Science course asessments from the University of Helsinki
 #### Part 9 - Typescript
 #### ~~Part 10 - React Native~~
 #### ~~Part 11 - Continuous Integration / Continuous Delivery (CI/CD)~~
-#### ~~Part 12 - Containers
-#### Part 13 - Databases~~
+#### ~~Part 12 - Containers~~
+#### ~~Part 13 - Databases~~
