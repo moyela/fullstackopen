@@ -1,7 +1,15 @@
-const App = (props) => {
-  const {counter} = props
+import { useState } from 'react'
+
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  setTimeout(
+    () => setCounter(counter + 1),
+    1000
+  )
+
   return (
-    <h1>Every Second Counts <br/>{counter}</h1>
+    <div>{counter}</div>
   )
 }
 
