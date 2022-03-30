@@ -23,23 +23,23 @@ const App = () => {
   return (
     <>
       <Display counter={counter} />
-      <Button onClick={increase} function='Increase'/>
-      <Button onClick={reduce} function='Decrease' />
-      <Button onClick={reset} function='RESET' />
+      <Button onClick={increase} functions='Increase'/>
+      <Button onClick={reduce} functions='Decrease' />
+      <Button onClick={reset} functions='RESET' />
     </>
   )
 }
 
-const Display = (props) => {
+const Display = ({counter}) => {
   return (
-    <h1>{props.counter}</h1>
+    <h1>{counter}</h1>
   )
 }
 
-const Button = (props) => {
+const Button = ({onClick, functions}) => {
   return (
-    <button onClick={props.onClick}>
-      {props.function}
+    <button onClick={onClick}>
+      {functions}
     </button>
   )
 }
