@@ -23,9 +23,9 @@ const App = () => {
   return (
     <>
       <Display counter={counter} />
-      <IncreaseButton onClick={increase} />
-      <DecreaseButton onClick={reduce} />
-      <ResetButton onClick={reset} />
+      <Button onClick={increase} function='Increase'/>
+      <Button onClick={reduce} function='Decrease' />
+      <Button onClick={reset} function='RESET' />
     </>
   )
 }
@@ -36,29 +36,11 @@ const Display = (props) => {
   )
 }
 
-const IncreaseButton = (props) => {
+const Button = (props) => {
   return (
     <button onClick={props.onClick}>
-      Increase
+      {props.function}
     </button>
-  )
-}
-
-const DecreaseButton = (props) => {
-  return (
-    <button onClick={props.onClick}>
-      Decrease
-    </button>
-  )
-}
-
-const ResetButton = (props) => {
-  return (
-    <div>
-      <button onClick={props.onClick}>
-        RESET
-      </button>
-    </div>
   )
 }
 
