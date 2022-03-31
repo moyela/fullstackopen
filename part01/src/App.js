@@ -1,62 +1,65 @@
 import { useState } from 'react'
 
+// unicafe example application 
+// for the University of Helsinki's fullstackopen 2022 program
+
 const App = () => {
-  const [left, setLeft] = useState(0)
-  const [right, setRight] = useState(0)
-  const [allClicks, setAll] = useState([])
 
-  const handleLeftClick = () => {
-    setAll(allClicks.concat('L'))
-    setLeft(left + 1)
-  }
+  //state saves clicks of each feedback to the component state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-  const handleRightClick = () => {
-    setAll(allClicks.concat('R'))
-    setRight(right + 1)
-  }
+  let all = good + neutral + bad
+  let average = good + (neutral * 0) + (bad * -1)
+  let positivePercent = ((good / all) * 100) + ' %'
+ 
 
-  const clearCache = () => {
-    setAll([])
-    setLeft(0)
-    setRight(0)
-  }
+  const submitGood = () => setGood(good + 1)
+  const submitNeutral = () => setNeutral(neutral + 1)
+  const submitBad = () => setBad(bad + 1)
 
   return (
-    <div>
-      <h1>
-        {left}
-      </h1>
-      <Button text='UP' handleClick={handleLeftClick}/>
-      <Button text='DOWN' handleClick={handleRightClick} />
-      <Button text='CLEAR' handleClick={clearCache} />
-      <h1>
-        {right}
-      </h1>
-      <History historyArray={allClicks}/>
-    </div>
+    <>
+      <Sections sectionTitle='Give Feedback'/>
+
+      <FeedbackButton text='Good' handleClick={submitGood} />
+      <FeedbackButton text='Neutral' handleClick={submitNeutral} />
+      <FeedbackButton text='Bad' handleClick={submitBad} />
+
+      <Sections sectionTitle='Statistics' />
+
+      <Statistics title='Good' figure={good}/>
+      <Statistics title='Neutral' figure={neutral} />
+      <Statistics title='Bad' figure={bad} />
+      <Statistics title='Total Feedback' figure={all} />
+      <Statistics title='Average' figure={average} />
+      <Statistics title='Proportion of Positive votes' figure={positivePercent} />
+    </>
   )
 }
 
-const History = ({historyArray}) => {
-  if (historyArray.length === 0) {
-    return (
-      <div>
-        the app is used by pressing the buttons above
-      </div>
-    )
-  }
+const Sections = ({sectionTitle}) => {
   return (
-    <div>
-      BUTTON PRESS HISTORY: {historyArray.join(' ')}
-    </div>
+    <>
+      <h1>{sectionTitle}</h1>
+    </>
   )
 }
 
-const Button = ({handleClick, text}) => {
+const FeedbackButton = ({text, handleClick}) => {
   return (
     <button onClick={handleClick}>
       {text}
     </button>
+  )
+}
+
+const Statistics = ({title, figure}) => {
+  return (
+    <h3>
+      {title} {figure}
+    </h3>
   )
 }
 
