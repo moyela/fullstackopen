@@ -1,48 +1,63 @@
 import { useState } from 'react'
 
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
 
-  const increase = () => {
-  
-    setCounter(counter + 1)
-    console.log('... plus one equals ... ' + counter)
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
   }
 
-  const reduce = () => {
-
-    setCounter(counter - 1)
-    console.log('... when one is removed we have ... ' + counter)
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
   }
 
-  const reset = () => {
-
-    setCounter(0)
-    console.log('value is reset to zero')
+  const clearCache = () => {
+    setAll([])
+    setLeft(0)
+    setRight(0)
   }
+
   return (
-    <>
-      <Display counter={counter} />
-      <Button onClick={increase} functions='Increase'/>
-      <Button onClick={reduce} functions='Decrease' />
-      <Button onClick={reset} functions='RESET' />
-    </>
+    <div>
+      <h1>
+        {left}
+      </h1>
+      <Button text='UP' handleClick={handleLeftClick}/>
+      <Button text='DOWN' handleClick={handleRightClick} />
+      <Button text='CLEAR' handleClick={clearCache} />
+      <h1>
+        {right}
+      </h1>
+      <History historyArray={allClicks}/>
+    </div>
   )
 }
 
-const Display = ({counter}) => {
+const History = ({historyArray}) => {
+  if (historyArray.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons above
+      </div>
+    )
+  }
   return (
-    <h1>{counter}</h1>
+    <div>
+      BUTTON PRESS HISTORY: {historyArray.join(' ')}
+    </div>
   )
 }
 
-const Button = ({onClick, functions}) => {
+const Button = ({handleClick, text}) => {
   return (
-    <button onClick={onClick}>
-      {functions}
+    <button onClick={handleClick}>
+      {text}
     </button>
   )
 }
-
 
 export default App
