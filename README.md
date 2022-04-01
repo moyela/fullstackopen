@@ -3,8 +3,7 @@
 
 #### Part 00 - Fundamentals of Web Apps
 #### Part 01 - Introduction to React
-#### Part 02 - Communicating with Servers*
-(typo in material)
+#### Part 02 - Communicating with Servers
 #### Part 03 - Programming a server with NodeJS and Express
 #### Part 04 - Testing Express servers and user administration
 #### Part 05 - Testing React Apps
