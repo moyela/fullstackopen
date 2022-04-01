@@ -43,17 +43,21 @@ const Statistics = (props) => {
       </>
     )
   }
-  
+
   return (
     <>
       <Sections sectionTitle='Statistics' />
 
-      <Entries title='Good' figure={props.good} />
-      <Entries title='Neutral' figure={props.neutral} />
-      <Entries title='Bad' figure={props.bad} />
-      <Entries title='Total Feedback' figure={props.all} />
-      <Entries title='Average' figure={props.average} />
-      <Entries title='Proportion of Positive votes' figure={props.positive} />
+      <table>
+        <tbody>
+          <StatisticLine title='Good' figure={props.good} />
+          <StatisticLine title='Neutral' figure={props.neutral} />
+          <StatisticLine title='Bad' figure={props.bad} />
+          <StatisticLine title='Total Feedback' figure={props.all} />
+          <StatisticLine title='Average' figure={props.average} />
+          <StatisticLine title='Proportion of Positive votes' figure={props.positive} />
+        </tbody>
+      </table>
     </>
   )
 }
@@ -74,11 +78,12 @@ const FeedbackButton = ({text, handleClick}) => {
   )
 }
 
-const Entries = ({title, figure}) => {
+const StatisticLine = ({title, figure}) => {
   return (
-    <h3>
-      {title} {figure}
-    </h3>
+    <tr>
+      <td>{title}</td>
+      <td>{figure}</td>
+    </tr>
   )
 }
 
