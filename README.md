@@ -1,5 +1,5 @@
 # Deep Dive Into Modern Web Development
-Course asessments from the Computer Science program at the University of Helsinki
+###### Course asessments from the Computer Science program at the University of Helsinki
 
 #### Part 00 - Fundamentals of Web Apps
 #### Part 01 - Introduction to React
