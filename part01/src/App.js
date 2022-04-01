@@ -11,7 +11,7 @@ const App = () => {
   const [bad, setBad] = useState(0)
 
   let all = good + neutral + bad
-  let average = good + (neutral * 0) + (bad * -1)
+  let average = (good - bad) / 3
   let positivePercent = ((good / all) * 100) + ' %'
  
 
@@ -27,14 +27,33 @@ const App = () => {
       <FeedbackButton text='Neutral' handleClick={submitNeutral} />
       <FeedbackButton text='Bad' handleClick={submitBad} />
 
+      <Statistics good={good} bad={bad} neutral={neutral} all={all} average={average} positive={positivePercent}/>
+
+    </>
+  )
+}
+
+const Statistics = (props) => {
+
+  if (props.all === 0) {
+    return (
+      <>
+        <Sections sectionTitle='Statistics' />
+        <div>NO FEEDBACK GIVEN. CLICK ABOVE TO GIVE FEEDBACK</div>
+      </>
+    )
+  }
+  
+  return (
+    <>
       <Sections sectionTitle='Statistics' />
 
-      <Statistics title='Good' figure={good}/>
-      <Statistics title='Neutral' figure={neutral} />
-      <Statistics title='Bad' figure={bad} />
-      <Statistics title='Total Feedback' figure={all} />
-      <Statistics title='Average' figure={average} />
-      <Statistics title='Proportion of Positive votes' figure={positivePercent} />
+      <Entries title='Good' figure={props.good} />
+      <Entries title='Neutral' figure={props.neutral} />
+      <Entries title='Bad' figure={props.bad} />
+      <Entries title='Total Feedback' figure={props.all} />
+      <Entries title='Average' figure={props.average} />
+      <Entries title='Proportion of Positive votes' figure={props.positive} />
     </>
   )
 }
@@ -55,7 +74,7 @@ const FeedbackButton = ({text, handleClick}) => {
   )
 }
 
-const Statistics = ({title, figure}) => {
+const Entries = ({title, figure}) => {
   return (
     <h3>
       {title} {figure}
