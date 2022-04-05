@@ -1,10 +1,9 @@
 # Deep Dive Into Modern Web Development
-Computer Science course asessments from the University of Helsinki
+##### Course assessments from the Computer Science program at the [University of Helsinki](https://studies.cs.helsinki.fi/)
 
 #### Part 00 - Fundamentals of Web Apps
 #### Part 01 - Introduction to React
-#### Part 02 - Communicating with Servers*
-(typo in material)
+#### Part 02 - Communicating with Servers
 #### Part 03 - Programming a server with NodeJS and Express
 #### Part 04 - Testing Express servers and user administration
 #### Part 05 - Testing React Apps
