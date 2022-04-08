@@ -26,6 +26,9 @@ const App = () => {
   // clicks stores the number of times a vote has been made, it is increased by voteForQuote
   const [clicks, setClicks] = useState(0)
 
+  // clicks stores the number of times the change anecdote button has been clicked
+  const [clicksAnec, setClicksAnec] = useState(0)
+
   //function to generate a random integer to set state for the anecdote index key
   const randomInt = function (min, max) {
     return Math.floor(Math.random() * (max - min)) + min
@@ -34,6 +37,8 @@ const App = () => {
   //function to execute the random integer generation and randomize the anecdote state
   
   const newAnecdote = () => {
+    let counter = clicksAnec;
+    setClicksAnec(counter + 1)
     setSelected(randomInt(1, 8))
     console.log('newAnecdote(): Anecdote', selected, 'has been selected')
     return selected
@@ -58,7 +63,7 @@ const App = () => {
       <VoteCount number={whichAnecdote}  selected={selected} />
       <Button text='Click here to generate a random anecdote'
       handleClick={newAnecdote}/>
-      <Button text='Vote' handleClick={voteForQuote}/>
+      <VoteButton text='Vote' handleClick={voteForQuote} clicks={clicksAnec}/>
       <MostVotes clicks={clicks} anecdotes={anecdotes} selected={selected} votes={votes}/>
     </>
   )
@@ -84,6 +89,25 @@ const Button = ({text, handleClick}) => {
         {text}
       </button>
     </p>
+  )
+}
+
+// vote button made to implement conditional rendering for the vote feature 
+// so users can't vote for the placeholder anecdote
+const VoteButton = ({text, handleClick, clicks}) => {
+
+  if (clicks > 0) {
+    return (
+      <p>
+        <button onClick={handleClick}>
+          {text}
+        </button>
+      </p>
+    )
+  }
+
+  return (
+    <></>
   )
 }
 
