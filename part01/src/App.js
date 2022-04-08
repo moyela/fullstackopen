@@ -59,7 +59,7 @@ const App = () => {
       <Button text='Click here to generate a random anecdote'
       handleClick={newAnecdote}/>
       <Button text='Vote' handleClick={voteForQuote}/>
-      <MostVotes clicks={clicks} anecdotes={anecdotes} selected={selected}/>
+      <MostVotes clicks={clicks} anecdotes={anecdotes} selected={selected} votes={votes}/>
     </>
   )
 }
@@ -100,16 +100,22 @@ const VoteCount = ({selected, number}) => {
   )
 }
 
-const MostVotes = ({clicks, anecdotes, selected}) => {
+const MostVotes = ({clicks, anecdotes, selected, votes}) => {
+
+  let firstPlace = Math.max(...votes)
+  let index = votes.indexOf(firstPlace)
   if (clicks > 0) {
     return (
       <>
         <h2>Anecdote with the most votes</h2>
         <div>
         <i>
-          {anecdotes[selected]}
+          {anecdotes[index]}
         </i>
       </div>
+      <p>
+        has <strong>{firstPlace}</strong> votes
+      </p>
       </>
     )
   }
