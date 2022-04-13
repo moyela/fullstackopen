@@ -57,6 +57,14 @@ const App = () => {
     return quoteCounter[selected]
   }
 
+  const resetAll = () => {
+    let zero = 0
+    setClicks(zero)
+    setClicksAnec(zero)
+    setVotes([0,0,0,0,0,0,0,0,0])
+    setSelected(zero)
+  }
+
   return (
     <>
       <Anecdotes anecdotes={anecdotes} selected={selected}/>
@@ -64,6 +72,7 @@ const App = () => {
       <Button text='Click here to generate a random anecdote'
       handleClick={newAnecdote}/>
       <VoteButton text='Vote' handleClick={voteForQuote} clicks={clicksAnec}/>
+      <Button text='RESET ALL' handleClick={resetAll}/>
       <MostVotes clicks={clicks} anecdotes={anecdotes} selected={selected} votes={votes}/>
     </>
   )
