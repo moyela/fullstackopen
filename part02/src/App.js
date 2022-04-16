@@ -18,10 +18,16 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3
+      },
+      {
+        name: 'Testing servers in React',
+        exercises: 22,
+        id: 4
       }
     ]
   }
 
+  console.log('APP WORKS...')
   return (
     <div>
       <Course course={course} />
@@ -34,6 +40,7 @@ const Course = ({course}) => {
     <>
       <Header course={course}/>
       <Content course={course}/>
+      <Total course={course} />
     </>
 
   )
@@ -50,17 +57,21 @@ const Header = ({course}) => {
 const Content = ({course}) => {
   return (
     <>
-      <Part course={course}/>
+      {course.parts.map(object => <p key={object.id}>{object.name} {object.exercises}</p>)}
     </>
   )
 }
 
-const Part = ({course}) => {
-  console.log(course.parts.name, course.parts.exercises)
+const Total = ({course}) => {
+
+  let totalArray = course.parts.map(object => object.exercises)
+
+  const sumOfArray = (first, remainder) => first + remainder
+  let total = totalArray.reduce(sumOfArray)
   return (
-  <>
-    {course.map( course => <p>{course.parts.name} {course.parts.exercises}</p>)}
-  </>
+    <h4>
+      Total number of exercises is {total}
+    </h4>
   )
 }
 
